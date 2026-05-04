@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_examen/screens/home_screens.dart';
 import 'detail_page.dart';
 
 class ListPage extends StatelessWidget {
-  const ListPage({super.key});
+  final String name;
+  const ListPage({super.key, required this.name});
 
   // Cambia a lista vacía [] para probar el estado vacío
-  static const List<String> _items = [
-    'Tarea A',
-    'Tarea B',
-    'Tarea C',
+  static const List<ListPage> items = [
+    ListPage(name: 'Tarea A'),
+    ListPage(name: 'Tarea B'),
+    ListPage(name: 'Tarea C'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Listado de Tareas')),
-      body: _items.isEmpty
+      body: items.isEmpty
           ? const Center(
               child: Text(
                 'No hay tareas disponibles',
@@ -23,18 +25,19 @@ class ListPage extends StatelessWidget {
               ),
             )
           : ListView.separated(
-              itemCount: _items.length,
-              separatorBuilder: (_, __) => const Divider(height: 1),
+              itemCount: items.length,
+              separatorBuilder: (context, __) => const Divider(height: 1),
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: CircleAvatar(child: Text('$index')),
-                  title: Text('Elemento $index: ${_items[index]}'),
+                  title: Text('Elemento $index: ${items[index]}'),
                   trailing: const Icon(Icons.chevron_right),
+                  //se pulsa y se navega a la pagina principal
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => Home(),
+                        builder: (context) => HomePage(),
                       ),
                     );
                   },

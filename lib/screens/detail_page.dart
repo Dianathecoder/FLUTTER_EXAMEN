@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'list_page.dart';
 
 class DetailPage extends StatelessWidget {
+  final ListPage item;
   final int index;
   final String text;
 
-  const DetailPage();
+  const DetailPage(
+      {super.key, required this.item, required this.index, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          'Elemento:???',
-          style: const TextStyle(fontSize: 24),
-        ),
-      ),
+          child: Column(
+        children: [
+          Text(
+            item.name,
+            style: const TextStyle(fontSize: 24),
+          ),
+        ],
+      )),
     );
   }
 }
