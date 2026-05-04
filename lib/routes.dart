@@ -5,7 +5,9 @@ class AppRoutes {
   static const String home = '/home';
   static const String list = '/list';
 
-  static Map<String, WidgetBuilder> get routes => {
+
+final Map<String,
+  /*static Map<String, WidgetBuilder>routes => {
         home: (_) => const ListPage(),
-      };
+      };*/
 }
